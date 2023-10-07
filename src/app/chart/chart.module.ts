@@ -11,8 +11,6 @@ import { ChartListInfoComponentComponent } from './chart-list-info-component/cha
 import { HighchartsChartModule } from 'highcharts-angular';
 import { HighchartComponent } from './highchart/highchart.component';
 import { NgxColorsModule } from 'ngx-colors';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
-
 
 @NgModule({
   declarations: [
@@ -31,7 +29,6 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     ChartRoutingModule,
     ReactiveFormsModule,
     IonicStorageModule.forRoot(),
-    MDBBootstrapModule.forRoot(),
   ]
 })
 export class ChartModule { }
