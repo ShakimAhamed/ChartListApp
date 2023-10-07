@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <mat-card class="custom-card">
+                <mat-card-header class="custom-card-header">
+                    <button (click)="addChart()"
+                       class="custom-item-right" mat-raised-button color="primary">Add Chart</button>
+                </mat-card-header>
+                <mat-card-content class="custom-card-content">
+                  <mat-table #table [dataSource]="dataSource">
+                
+                    <!-- Sl Column -->
+                    <ng-container matColumnDef="sl">
+                      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+                      <mat-cell *matCellDef="let element ; let i = index;">{{i + 1}} </mat-cell>
+                    </ng-container>
+                
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="chartName">
+                      <mat-header-cell *matHeaderCellDef> Chart Name </mat-header-cell>
+                      <mat-cell *matCellDef="let element">{{element.chartName}} </mat-cell>
+                    </ng-container>
+                
+                    <!-- Type Column -->
+                    <ng-container matColumnDef="chartType">
+                      <mat-header-cell *matHeaderCellDef> Chart Type </mat-header-cell>
+                      <mat-cell *matCellDef="let element">{{element.chartType | titlecase}} </mat-cell>
+                    </ng-container>
+                
+                    <!-- Color Column -->
+                    <ng-container matColumnDef="chartColorA">
+                      <mat-header-cell *matHeaderCellDef>First Series Color</mat-header-cell>
+                      <mat-cell *matCellDef="let element">{{element.chartColorA}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Color Column -->
+                    <ng-container matColumnDef="chartColorB">
+                      <mat-header-cell *matHeaderCellDef>Second Series Color</mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{element.chartColorB}} </mat-cell>
+                    </ng-container>
+
+                    <!-- chart Date Column -->
+                    <ng-container matColumnDef="chartDate">
+                      <mat-header-cell *matHeaderCellDef> Chart Date </mat-header-cell>
+                      <mat-cell *matCellDef="let element">{{element.chartDate | date}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Action Column -->
+                    <ng-container matColumnDef="action">
+                      <mat-header-cell *matHeaderCellDef style="width: 115px;">Action</mat-header-cell>
+                      <mat-cell *matCellDef="let element">
+                        <mat-icon matTooltip="delete" color="accent"
+                          (click)="deleteChart(element,'delete')" style="cursor: pointer;margin-right: 15px;">delete</mat-icon>
+                        <mat-icon matTooltip="edit" color="primary"
+                          (click)="editChart(element,'edit')" style="cursor: pointer;">edit</mat-icon>
+                      </mat-cell>
+                    </ng-container>
+                
+                    <mat-header-row  *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                  </mat-table>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div> 
+</div>
+
+

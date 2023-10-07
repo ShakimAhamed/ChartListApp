@@ -25,9 +25,19 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/mdbootstrap/css/bootstrap.min.css",
+              "node_modules/mdbootstrap/css/mdb.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/mdbootstrap/js/jquery.min.js",
+              "node_modules/mdbootstrap/js/bootstrap.min.js",
+              "node_modules/mdbootstrap/js/popper.min.js",
+              "node_modules/mdbootstrap/js/mdb.min.js",
+              "node_modules/chart.js/dist/Chart.js",
+              "node_modules/hammerjs/hammer.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -87,6 +97,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -94,5 +105,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

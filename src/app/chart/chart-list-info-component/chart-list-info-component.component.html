@@ -1,0 +1,72 @@
+
+<div mat-dialog-content>
+    <div class="row pb-4">
+      <div class="col-md-12">
+  
+        <mat-card class="custom-card">
+          <mat-card-header class="custom-card-header bg-primary white-text">
+            <span style="padding-left: 15px;padding-bottom: 15px;">Chart List Info</span>
+          </mat-card-header>
+          <mat-card-content class="custom-card-content mt-4">
+            <div class="row">
+              <div class="col-md-12">
+                <form [formGroup]="chartListInfoForm" ngClass="cr" class="customForm">
+                  <div class="row">
+                    <mat-form-field class="col-md-4">
+                      <mat-label>Chart Name</mat-label>
+                      <input formControlName="chartName" type="text" matInput placeholder="Chart Name"> 
+                    </mat-form-field>
+                    
+                    <mat-form-field class="col-md-4">
+                      <mat-label>Select Chart Type</mat-label>
+                      <mat-select formControlName="chartType">
+                          <mat-option [value]="0">-- Select -- </mat-option>
+                          <mat-option *ngFor="let option of listOfChartType" [value]="option.value">
+                              {{option.name}}
+                          </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+    
+                    <mat-form-field class="col-md-4">
+                      <mat-label>Chart Date</mat-label>
+                      <input formControlName="chartDate" matInput [matDatepicker]="chartDate"
+                        (click)="chartDate.open()" placeholder="Chart Date" required >
+                      <mat-datepicker-toggle matSuffix [for]="chartDate">
+                      </mat-datepicker-toggle>
+                      <mat-datepicker #chartDate></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4" >
+                      <mat-label class="d-block">First Series Color*</mat-label>
+                      <mat-label style="width: 85%;" class="">{{chartListInfoForm.value.chartColorA}} </mat-label>
+                      <ngx-colors ngx-colors-trigger style="width: 15%;" class="float-right" formControlName="chartColorA"></ngx-colors>
+                      <!-- <input formControlName="chartColor" matInput placeholder="Chart Color">  -->
+                      
+                    </div>
+    
+                    <div class="col-md-4">
+                      <mat-label class="d-block">Second Series Color*</mat-label>
+                      <mat-label style="width: 85%;" class="">{{chartListInfoForm.value.chartColorB}} </mat-label>
+                      <ngx-colors ngx-colors-trigger style="width: 15%;" class="float-right" formControlName="chartColorB"></ngx-colors>
+                      <!-- <input formControlName="chartColor" matInput placeholder="Chart Color">  -->
+                      
+                    </div>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+  
+      </div>
+    </div>
+  </div>
+
+<div mat-dialog-actions align="end">
+    <button (click)="close()" mat-raised-button color="accent">Cancel</button>
+    <button [disabled]="chartListInfoForm.invalid"
+      (click)="chartListInfoForm.valid && save()" mat-raised-button
+      color="primary">Save</button>
+</div>

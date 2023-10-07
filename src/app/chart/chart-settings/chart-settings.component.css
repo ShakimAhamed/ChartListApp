@@ -1,0 +1,11 @@
+.custom-card-content {
+    overflow: auto;
+}
+  
+  @media(max-width: 600px) {
+    .mat-mdc-table {
+      width: 700px;
+    }
+  
+  }
+  

@@ -1,0 +1,4 @@
+.collapse{
+    -webkit-transition: all .3s linear 0s;
+    transition: all .3s linear 0s;
+}

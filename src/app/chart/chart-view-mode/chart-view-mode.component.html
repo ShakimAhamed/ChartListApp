@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row mt-4">
+        <mat-form-field class="col-md-4">
+            <mat-label>Select Chart</mat-label>
+            <mat-select (selectionChange)="_filterList($event)">
+                <mat-option [value]="0">-- Select -- </mat-option>
+                <mat-option *ngFor="let option of chartLists" [value]="option.id">
+                    {{option.chartName}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="col-md-4" [hidden]="chartLists.length == 0">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+              <input matStartDate #startDate formControlName="startDate" placeholder="Start date">
+              <input matEndDate #endDate formControlName="endDate" placeholder="End date" >
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker>
+                <mat-date-range-picker-actions>
+                    <button mat-button matDateRangePickerCancel>Cancel</button>
+                    <button mat-raised-button color="primary" matDateRangePickerApply (click)="_dateRangeChange(range.value.startDate, range.value.endDate)">Apply</button>
+                </mat-date-range-picker-actions>
+            </mat-date-range-picker>
+        </mat-form-field>
+        <!-- <div class="col-md-4">
+            <button (click)="_ViewChartList()" class="custom-item-right float-right" mat-raised-button color="primary">Load Chart</button>
+        </div> -->
+    </div>
+    <div class="row">
+        <div class="col-md-4" *ngFor="let obj of chartLists; let i= index">
+            <app-highchart class="row" [listObj]="obj" [data1]="obj.data1" [data2]="obj.data2" ></app-highchart>
+        </div>
+    </div>
+</div>
+
